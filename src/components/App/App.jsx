@@ -6,6 +6,7 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import Footer from "../Footer/Footer";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -39,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <div className="page">
+    <div className="page" style={{ fontFamily: "Cabinet Grotesk" }}>
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
@@ -54,7 +55,7 @@ function App() {
           Name {""}
           <input
             type="text"
-            className="modal__input"
+            className="modal__input_name"
             id="name"
             placeholder="name"
           />
@@ -63,7 +64,7 @@ function App() {
           Image {""}
           <input
             type="URL"
-            className="modal__input"
+            className="modal__input_URL"
             id="imageUrl"
             placeholder="Image URL"
           />
@@ -107,6 +108,7 @@ function App() {
         card={selectedCard}
         onClose={closeActiveModal}
       />
+      <Footer />
     </div>
   );
 }

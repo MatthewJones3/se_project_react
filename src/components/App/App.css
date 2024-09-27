@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("./vendor/fonts/CabinetGrotesk-Black.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
 .page {
   background-color: #f3f3f3;
 }

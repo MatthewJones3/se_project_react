@@ -30,7 +30,8 @@
   background-color: #fff;
   position: relative;
   padding: 28px 28px 36px;
-  max-width: 496px;
+  max-width: 498px;
+  /*height: 496px;*/
   box-sizing: border-box;
   width: 100%;
   border-radius: 20px;
@@ -42,7 +43,16 @@
   width: 100%;
 }
 
-.modal__input {
+.modal__input_name {
+  display: block;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  width: 440px;
+  height: 29px;
+}
+
+.modal__input_URL {
   display: block;
   border-top: none;
   border-right: none;
@@ -62,4 +72,8 @@
   width: 124px;
   height: 36px;
   border-radius: 4px;
+  border: none;
+  color: #fff;
+  background-color: #000000;
+  opacity: 30%;
 }

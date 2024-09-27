@@ -1,0 +1,26 @@
+.modal__image {
+  height: 498px;
+  width: 498px;
+  border-radius: 22px;
+  margin-left: -28px;
+  margin-top: -28px;
+}
+
+.modal__close {
+  border: none;
+  background-color: #fff;
+}
+
+.modal__close-icon {
+  height: 22px;
+  width: 22px;
+  border: none;
+  background-color: gray;
+}
+
+.modal__close-icon-garment {
+  height: 22px;
+  width: 22px;
+  border: none;
+  background-color: #fff;
+}
