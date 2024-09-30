@@ -40,7 +40,7 @@ function App() {
   }, []);
 
   return (
-    <div className="page" style={{ fontFamily: "Cabinet Grotesk" }}>
+    <div className="page" style={{ fontFamily: "CabinetGrotesk" }}>
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
@@ -75,6 +75,7 @@ function App() {
             <input
               id="hot"
               type="radio"
+              name="weatherType"
               className="modal__input modal__input_type_radio"
             />{" "}
             Hot
@@ -86,6 +87,7 @@ function App() {
             <input
               id="warm"
               type="radio"
+              name="weatherType"
               className="modal__input modal__input_type_radio"
             />{" "}
             Warm
@@ -97,6 +99,7 @@ function App() {
             <input
               id="cold"
               type="radio"
+              name="weatherType"
               className="modal__input modal__input_type_radio"
             />{" "}
             Cold
