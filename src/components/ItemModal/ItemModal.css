@@ -9,13 +9,15 @@
 .modal__close {
   border: none;
   background-color: #fff;
+  padding: 0px;
+  background-color: transparent;
 }
 
 .modal__close-icon {
   height: 22px;
   width: 22px;
   border: none;
-  background-color: gray;
+  padding: 0;
 }
 
 .modal__close-icon-garment {
