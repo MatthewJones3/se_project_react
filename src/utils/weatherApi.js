@@ -10,10 +10,22 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
   });
 };
 
-export const filterWeatherData = (data) => {
+/*export const filterWeatherData = (data) => {
   const result = {};
   result.city = data.name;
   result.temp = { F: data.main.temp };
+  result.type = getWeatherType(result.temp.F);
+  return result;
+};*/
+
+export const filterWeatherData = (data) => {
+  const result = {};
+  const tempF = data.main.temp; // Fahrenheit from the API
+  result.city = data.name;
+  result.temp = {
+    F: tempF,
+    C: Math.round((tempF - 32) * (5 / 9)), // Convert to Celsius
+  };
   result.type = getWeatherType(result.temp.F);
   return result;
 };
