@@ -37,7 +37,7 @@
 }
 
 .toggle-switch__checkbox:checked + .toggle-switch__slider {
-  background-color: #000; /* Change to black when checked */
+  background-color: #000; 
 }
 
 .toggle-switch__checkbox:checked + .toggle-switch__slider:before {
@@ -49,7 +49,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-weight: bold;
-  color: black; /* Change text color to black */
+  color: black; 
 }
 
 .toggle-switch__label--left {

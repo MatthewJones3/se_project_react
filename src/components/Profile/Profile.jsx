@@ -1,9 +1,8 @@
-// src/components/Profile/Profile.jsx
 import React from "react";
 import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
-import ModalWithForm from "../ModalWithForm/ModalWithForm"; // Import your AddItemModal here
-import { defaultClothingItems } from "../../utils/constants"; // Import clothing items
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { defaultClothingItems } from "../../utils/constants";
 
 function Profile() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
