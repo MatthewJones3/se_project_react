@@ -1,28 +1,32 @@
-import "./ItemModal.css";
-import closeIcon from "../../images/close-icon.png";
 
-function ItemModal({ activeModal, onClose, card, onDelete }) {
+
+import React from "react";
+
+function ItemModal({ item, isOpen, onCloseModal, onDeleteItem }) {
+  if (!isOpen) return null;
+
+  const handleDelete = () => {
+    onDeleteItem(item.id);
+    onCloseModal();
+  };
+
   return (
-    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
-      <div className="modal__content modal__content_type_image">
-        <button onClick={onClose} type="button" className="modal__close">
-          <img src={closeIcon} alt="Close" className="modal__close-icon" />
+    <div className="modal modal_opened">
+      <div className="modal__content">
+        <span className="modal__close" onClick={onCloseModal}>
+          &times;
+        </span>
+        <h2>{item.name}</h2>
+        <img src={item.imageUrl} alt={item.name} className="modal__image" />
+        <p>Weather: {item.weather}</p>
+        <button className="modal__delete-button" onClick={handleDelete}>
+          Delete Item
         </button>
-        <img src={card.imageUrl} alt="modal image" className="modal__image" />
-        <div className="modal__footer">
-          <h2 className="modal__caption">{card.name}</h2>
-          <p className="modal__weather">Weather: {card.weather}</p>
-          <button
-            onClick={() => onDelete(card)}
-            type="button"
-            className="modal__delete-button"
-          >
-            Delete Item
-          </button>
-        </div>
       </div>
     </div>
   );
 }
 
 export default ItemModal;
+
+
