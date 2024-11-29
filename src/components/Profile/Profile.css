@@ -1,0 +1,48 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile__content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.sidebar {
+  width: 200px;
+  padding: 20px;
+}
+
+.clothes-section {
+  flex: 1;
+  margin-left: 120px;
+  padding: 0 20px;
+}
+
+.clothes-section__add-item-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.clothes-section__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  margin-left: 120px;
+}
+
+.clothes-section__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin-left: 120px;
+}

@@ -1,39 +1,18 @@
-/*.card {
-  width: 323px;
-  height: 328px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.card__name {
-  position: absolute;
-  top: 15px;
-  margin: 0;
-}
-
-.card__image {
-  width: 100%;
-}
-
-.cards__text {
-  font-family: "CabinetGrotesk", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24.8px;
-}*/
-
-.item-list {
+/*.clothes-section__list {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
 }
 
 .item-card {
-  width: 325px;
-  height: 328px;
-  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .item-card__image {
@@ -45,14 +24,65 @@
 .item-card__name {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: lightgrey;
   font-size: 16px;
-  padding: 10px;
   text-align: center;
   z-index: 1;
+  width: 72px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.item-card__weather {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  z-index: 1;
+}*/
+
+/* ItemCard.css */
+.clothes-section__list {
+  list-style: none;
+  padding: 0;
+  margin-left: 120px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.item-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-card__name {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: lightgrey;
+  font-size: 16px;
+  text-align: center;
+  z-index: 1;
+  width: 72px;
+  height: 24px;
+  border-radius: 12px;
 }
 
 .item-card__weather {
