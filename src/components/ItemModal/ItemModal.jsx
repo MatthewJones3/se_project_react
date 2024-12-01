@@ -1,9 +1,7 @@
-
-
 import React from "react";
 
 function ItemModal({ item, isOpen, onCloseModal, onDeleteItem }) {
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
 
   const handleDelete = () => {
     onDeleteItem(item.id);
@@ -11,7 +9,7 @@ function ItemModal({ item, isOpen, onCloseModal, onDeleteItem }) {
   };
 
   return (
-    <div className="modal modal_opened">
+    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
         <span className="modal__close" onClick={onCloseModal}>
           &times;
@@ -28,5 +26,3 @@ function ItemModal({ item, isOpen, onCloseModal, onDeleteItem }) {
 }
 
 export default ItemModal;
-
-

@@ -6,6 +6,7 @@ function ItemCard({ item, onCardClick }) {
     onCardClick(item);
   };
 
+
   return (
     <li className="item-card">
       <img
