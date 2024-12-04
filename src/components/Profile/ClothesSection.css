@@ -1,5 +1,13 @@
 .clothes-section {
   margin-left: 120px;
+  margin-top: 120px;
+}
+
+.clothes-section__title {
+  font-size: 24px;
+  color: #333;
+  display: inline-block;
+  margin-right: 20px;
 }
 
 .clothes-section__add-item-btn {
@@ -10,13 +18,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  margin-bottom: 20px;
-}
-
-.clothes-section__title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
+  vertical-align: middle;
 }
 
 .clothes-section__list {
@@ -25,4 +27,5 @@
   gap: 15px;
   list-style: none;
   padding: 0;
+  margin-top: 20px;
 }

@@ -22,3 +22,5 @@ function ItemCard({ item, onCardClick }) {
 }
 
 export default ItemCard;
+
+

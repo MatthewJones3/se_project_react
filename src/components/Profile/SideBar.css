@@ -1,4 +1,4 @@
-.sidebar {
+/*.sidebar {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -15,6 +15,31 @@
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.sidebar__username {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}*/
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar__user-info {
+  display: flex;
+  align-items: center; /* Aligns items vertically centered */
+  margin-bottom: 20px;
+}
+
+.sidebar__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px; /* Space between avatar and username */
 }
 
 .sidebar__username {
