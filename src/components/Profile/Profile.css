@@ -16,8 +16,7 @@
 
 .clothes-section {
   flex: 1;
-  margin-left: 120px;
-  padding: 0 20px;
+  margin-left: 95px;
 }
 
 .clothes-section__add-item-btn {
@@ -40,7 +39,7 @@
 
 .clothes-section__list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   list-style: none;
   padding: 0;

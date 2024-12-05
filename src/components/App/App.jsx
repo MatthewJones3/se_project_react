@@ -101,7 +101,12 @@ function App() {
               />
               <Route
                 path="/profile"
-                element={<Profile clothingItems={clothingItems} onCardClick={handleCardClick}/>}
+                element={
+                  <Profile
+                    clothingItems={clothingItems}
+                    onCardClick={handleCardClick}
+                  />
+                }
               />
             </Routes>
           </div>
@@ -113,7 +118,7 @@ function App() {
           <ItemModal
             isOpen={activeModal === "preview"}
             activeModal={activeModal}
-            card={selectedCard}
+            item={selectedCard}
             onClose={closeActiveModal}
             onDelete={handleCardDelete}
           />

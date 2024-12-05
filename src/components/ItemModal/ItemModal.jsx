@@ -5,7 +5,7 @@ function ItemModal({ item, isOpen, onClose, onDelete }) {
   if (!isOpen) return null;
 
   const handleDelete = () => {
-    onDelete(item._id);
+    onDelete(item);
     onClose();
   };
 
@@ -16,7 +16,7 @@ function ItemModal({ item, isOpen, onClose, onDelete }) {
           &times;
         </span>
         <h2>{item?.name}</h2>
-        <img src={item?.link} alt={item?.name} className="modal__image" />
+        <img src={item?.imageUrl} alt={item?.name} className="modal__image" />
         <p>Weather: {item?.weather}</p>
         <button className="modal__delete-button" onClick={handleDelete}>
           Delete Item
