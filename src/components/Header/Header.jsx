@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../images/Wtwr-logo.svg";
 import avatar from "../../images/avatar.png";

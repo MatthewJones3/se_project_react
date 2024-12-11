@@ -8,13 +8,17 @@ function ClothesSection({ items, onAddItemClick, onCardClick }) {
       <h2 className="clothes-section__title">Your Items</h2>
       <button
         onClick={onAddItemClick}
-        className="clothes-section__add-item-btn"
+        className=/*"clothes-section__add-item-btn"*/ "header__add-clothes-btn"
       >
         + Add new
       </button>
       <ul className="clothes-section__list">
-        {items.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+        {items.map((item, index) => (
+          <ItemCard
+            key={item._id || index}
+            item={item}
+            onCardClick={onCardClick}
+          />
         ))}
       </ul>
     </section>
