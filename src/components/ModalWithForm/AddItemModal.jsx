@@ -84,4 +84,3 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
 };
 
 export default AddItemModal;
-
