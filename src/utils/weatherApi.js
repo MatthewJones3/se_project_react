@@ -20,6 +20,22 @@ export const getItems = () => {
   });
 };
 
+export const addItem = (item) => {
+  return fetch("http://localhost:3001/items", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(item),
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+  });
+};
+
 export const deleteItem = (id) => {
   if (!id) {
     return Promise.reject("Item ID is required");

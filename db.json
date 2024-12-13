@@ -23,6 +23,12 @@
       "name": "Sweatshirt",
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sweatshirt.png?etag=008a9674757bea2e0bdb31242e364be0"
+    },
+    {
+      "name": "Hat",
+      "imageUrl": "https://cdni.llbean.net/is/image/wim/507866_442_44?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/507866_442_41",
+      "weather": "cold",
+      "_id": 16
     }
   ]
 }

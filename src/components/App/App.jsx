@@ -11,6 +11,7 @@ import {
   filterWeatherData,
   getItems,
   deleteItem,
+  addItem,
 } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
@@ -65,13 +66,13 @@ function App() {
     }
   };
 
-  const handleAddItemSubmit = (item) => {
-    const itemWithId = { ...item, _id: item._id || generateUniqueId() };
-    setClothingItems([itemWithId, ...clothingItems]);
-  };
-
-  const generateUniqueId = () => {
-    return `item-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+  const handleAddItemSubmit = async (item) => {
+    try {
+      const newItem = await addItem(item);
+      setClothingItems([newItem, ...clothingItems]);
+    } catch (error) {
+      console.error("Failed to add item:", error);
+    }
   };
 
   useEffect(() => {
