@@ -51,6 +51,6 @@
 }
 
 .modal__title {
-  position: relative;
+  position: initial;
   top: 490px;
 }

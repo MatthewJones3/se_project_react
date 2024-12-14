@@ -29,6 +29,12 @@
       "imageUrl": "https://cdni.llbean.net/is/image/wim/507866_442_44?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/507866_442_41",
       "weather": "cold",
       "_id": 16
+    },
+    {
+      "name": "Winter Coat",
+      "imageUrl": "https://target.scene7.com/is/image/Target/GUEST_d89c2918-bcf0-4d40-83f8-5408c3a8f415?wid=488&hei=488&fmt=pjpeg",
+      "weather": "cold",
+      "_id": 17
     }
   ]
 }
