@@ -4,7 +4,7 @@ import ClothesSection from "./ClothesSection";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./Profile.css";
 
-function Profile({ clothingItems, onCardClick }) {
+function Profile({ clothingItems, onCardClick, handleAddClick }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleAddItemClick = () => {
@@ -22,6 +22,7 @@ function Profile({ clothingItems, onCardClick }) {
         items={clothingItems}
         onAddItemClick={handleAddItemClick}
         onCardClick={onCardClick}
+        handleAddClick={handleAddClick}
       />
       <ModalWithForm
         title="Add Item"

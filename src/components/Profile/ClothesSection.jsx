@@ -3,12 +3,8 @@ import ItemCard from "../ItemCard/ItemCard";
 import AddItemModal from "../ModalWithForm/AddItemModal";
 import "./ClothesSection.css";
 
-function ClothesSection({ items, onCardClick }) {
+function ClothesSection({ items, onCardClick, handleAddClick }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleAddItemClick = () => {
-    setIsModalOpen(true);
-  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -21,7 +17,7 @@ function ClothesSection({ items, onCardClick }) {
   return (
     <section className="clothes-section">
       <h2 className="clothes-section__title">Your Items /</h2>
-      <button onClick={handleAddItemClick} className="header__add-clothes-btn">
+      <button onClick={handleAddClick} className="header__add-clothes-btn">
         + Add new
       </button>
       <ul className="clothes-section__list">
@@ -29,12 +25,12 @@ function ClothesSection({ items, onCardClick }) {
           <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
         ))}
       </ul>
-
+      {/* 
       <AddItemModal
         isOpen={isModalOpen}
         onAddItem={handleAddItem}
         onCloseModal={handleCloseModal}
-      />
+      /> */}
     </section>
   );
 }
