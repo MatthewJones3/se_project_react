@@ -24,14 +24,6 @@ function Profile({ clothingItems, onCardClick, handleAddClick }) {
         onCardClick={onCardClick}
         handleAddClick={handleAddClick}
       />
-      <ModalWithForm
-        title="Add Item"
-        buttonText="Add"
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      >
-        {}
-      </ModalWithForm>
     </div>
   );
 }

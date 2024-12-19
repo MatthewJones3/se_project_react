@@ -1,35 +1,32 @@
 const baseUrl = "http://localhost:3001";
 
-export const getItems = async () => {
-  const response = await fetch(`${baseUrl}/items`);
-  if (!response.ok) {
-    throw new Error(`Error: ${response.status}`);
+function checkResponse(res) {
+  if (!res.ok) {
+    throw new Error(`Error: ${res.status}`);
   }
-  return response.json();
+  return res.json();
+}
+
+function request(url, options = {}) {
+  return fetch(url, options).then(checkResponse);
+}
+
+export const getItems = async () => {
+  return request(`${baseUrl}/items`);
 };
 
 export const addItem = async (item) => {
-  const response = await fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(item),
   });
-
-  if (!response.ok) {
-    throw new Error(`Error: ${response.status}`);
-  }
-
-  return response.json();
 };
 
 export const deleteItem = async (id) => {
-  const response = await fetch(`${baseUrl}/items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
   });
-
-  if (!response.ok) {
-    throw new Error(`Error: ${response.status}`);
-  }
 };

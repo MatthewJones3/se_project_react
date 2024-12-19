@@ -37,16 +37,10 @@
       "_id": 17
     },
     {
-      "name": "jacket",
+      "name": "test",
       "imageUrl": "https://cdni.llbean.net/is/image/wim/512273_426_44?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/512273_426_41",
       "weather": "cold",
       "_id": 18
-    },
-    {
-      "name": "Jacket",
-      "imageUrl": "https://cdni.llbean.net/is/image/wim/512273_426_44?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/512273_426_41",
-      "weather": "cold",
-      "_id": 19
     }
   ]
 }

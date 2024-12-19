@@ -1,52 +1,39 @@
+const baseUrl = "http://localhost:3001";
+
+function checkResponse(res) {
+  if (!res.ok) {
+    return Promise.reject(`Error: ${res.status}`);
+  }
+  return res.json();
+}
+
+function request(url, options = {}) {
+  return fetch(url, options).then(checkResponse);
+}
+
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
+  ).then(checkResponse);
 };
 
 export const getItems = () => {
-  return fetch("http://localhost:3001/items").then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-  });
+  return request(`${baseUrl}/items`);
 };
 
 export const addItem = (item) => {
-  return fetch("http://localhost:3001/items", {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(item),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      return Promise.reject(`Error: ${res.status}`);
-    }
   });
 };
 
 export const deleteItem = (id) => {
-  if (!id) {
-    return Promise.reject("Item ID is required");
-  }
-
-  return fetch(`http://localhost:3001/items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-  }).then((res) => {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
   });
 };
 
