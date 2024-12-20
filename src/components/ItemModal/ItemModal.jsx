@@ -12,7 +12,7 @@ function ItemModal({ item, isOpen, onClose, onDelete }) {
     }
 
     onDelete(item);
-    onClose();
+    /*onClose();*/
   };
 
   return (
@@ -35,5 +35,3 @@ function ItemModal({ item, isOpen, onClose, onDelete }) {
 }
 
 export default ItemModal;
-
-
