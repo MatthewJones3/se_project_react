@@ -1,15 +1,10 @@
-const baseUrl = "http://localhost:3001";
-
-function checkResponse(res) {
+const checkResponse = (res) => {
   if (!res.ok) {
     return Promise.reject(`Error: ${res.status}`);
   }
   return res.json();
-}
+};
 
-function request(url, options = {}) {
-  return fetch(url, options).then(checkResponse);
-}
 
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
@@ -17,25 +12,6 @@ export const getWeather = ({ latitude, longitude }, APIkey) => {
   ).then(checkResponse);
 };
 
-export const getItems = () => {
-  return request(`${baseUrl}/items`);
-};
-
-export const addItem = (item) => {
-  return request(`${baseUrl}/items`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(item),
-  });
-};
-
-export const deleteItem = (id) => {
-  return request(`${baseUrl}/items/${id}`, {
-    method: "DELETE",
-  });
-};
 
 export const filterWeatherData = (data) => {
   const result = {};
@@ -48,6 +24,7 @@ export const filterWeatherData = (data) => {
   result.type = getWeatherType(result.temp.F);
   return result;
 };
+
 
 const getWeatherType = (temperature) => {
   if (temperature > 86) {

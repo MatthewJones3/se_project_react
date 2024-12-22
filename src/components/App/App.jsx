@@ -6,13 +6,9 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import AddItemModal from "../ModalWithForm/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
-import {
-  getWeather,
-  filterWeatherData,
-  getItems,
-  deleteItem,
-  addItem,
-} from "../../utils/weatherApi";
+import { getItems, deleteItem, addItem } from "../../utils/api"; 
+import { getWeather, filterWeatherData } from "../../utils/weatherApi"; 
+
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
@@ -56,7 +52,7 @@ function App() {
     }
 
     try {
-      await deleteItem(card._id);
+      await deleteItem(card._id); 
       setClothingItems((prevItems) =>
         prevItems.filter((item) => item._id !== card._id)
       );
@@ -68,7 +64,7 @@ function App() {
 
   const handleAddItemSubmit = async (item) => {
     try {
-      const newItem = await addItem(item);
+      const newItem = await addItem(item); 
       setClothingItems([newItem, ...clothingItems]);
     } catch (error) {
       console.error("Failed to add item:", error);
@@ -76,16 +72,16 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, APIkey) 
       .then((data) => {
-        const filteredData = filterWeatherData(data);
+        const filteredData = filterWeatherData(data); 
         setWeatherData(filteredData);
       })
       .catch(console.error);
 
     const fetchItems = async () => {
       try {
-        const items = await getItems();
+        const items = await getItems(); 
         setClothingItems(items);
       } catch (error) {
         console.error(error);

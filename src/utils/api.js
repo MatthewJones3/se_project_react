@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "http://localhost:3001"; 
 
 function checkResponse(res) {
   if (!res.ok) {
@@ -11,11 +11,13 @@ function request(url, options = {}) {
   return fetch(url, options).then(checkResponse);
 }
 
-export const getItems = async () => {
+
+export const getItems = () => {
   return request(`${baseUrl}/items`);
 };
 
-export const addItem = async (item) => {
+
+export const addItem = (item) => {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -25,8 +27,10 @@ export const addItem = async (item) => {
   });
 };
 
-export const deleteItem = async (id) => {
+
+export const deleteItem = (id) => {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
   });
 };
+

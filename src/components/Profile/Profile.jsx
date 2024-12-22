@@ -29,3 +29,5 @@ function Profile({ clothingItems, onCardClick, handleAddClick }) {
 }
 
 export default Profile;
+
+

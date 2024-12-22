@@ -45,20 +45,34 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
       onClose={onCloseModal}
       onSubmit={handleSubmit}
     >
-      <input
-        type="text"
-        className="modal__input_name"
-        placeholder="Item Name"
-        value={name}
-        onChange={handleNameChange}
-      />
-      <input
-        type="text"
-        className="modal__input_URL"
-        placeholder="Image URL"
-        value={imageUrl}
-        onChange={handleImageUrlChange}
-      />
+      <div className="modal__input-group">
+        <label htmlFor="item-name" className="modal__label">
+          Name
+        </label>
+        <input
+          type="text"
+          id="item-name"
+          className="modal__input_name"
+          placeholder="Item Name"
+          value={name}
+          onChange={handleNameChange}
+        />
+      </div>
+
+      <div className="modal__input-group">
+        <label htmlFor="image-url" className="modal__label">
+          Image
+        </label>
+        <input
+          type="text"
+          id="image-url"
+          className="modal__input_URL"
+          placeholder="Image URL"
+          value={imageUrl}
+          onChange={handleImageUrlChange}
+        />
+      </div>
+
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select Weather Type</legend>
         <label className="modal__label">

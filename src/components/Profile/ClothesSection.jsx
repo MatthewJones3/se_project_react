@@ -25,12 +25,6 @@ function ClothesSection({ items, onCardClick, handleAddClick }) {
           <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
         ))}
       </ul>
-      {/* 
-      <AddItemModal
-        isOpen={isModalOpen}
-        onAddItem={handleAddItem}
-        onCloseModal={handleCloseModal}
-      /> */}
     </section>
   );
 }

@@ -11,6 +11,10 @@
   background-color: #fff;
   padding: 0px;
   background-color: transparent;
+  position: absolute;
+  top: -25px;
+  left: 450px;
+  cursor: pointer;
 }
 
 .modal__close-icon {
@@ -48,9 +52,15 @@
   max-width: 120px;
   position: relative;
   top: 33px;
+  margin-top: 0px;
 }
 
 .modal__title {
-  position: initial;
-  top: 490px;
+  position: relative;
+  top: 20px;
+  color: #000000;
+  width: 120px;
+  margin-bottom: 0px;
+  font-size: 18px;
+  margin-top: 0px;
 }
