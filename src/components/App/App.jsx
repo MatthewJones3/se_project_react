@@ -497,6 +497,7 @@ function App() {
                 user={currentUser}
                 onLogout={handleLogout}
                 onLoginClick={handleLoginClick}
+                //onSignUpClick={handleSignUpClick}
               />
               <Routes>
                 <Route

@@ -10,6 +10,10 @@
   align-items: center;
 }
 
+.modal_opened {
+  visibility: visible;
+}
+
 .modal__content {
   background-color: white;
   padding: 20px;
