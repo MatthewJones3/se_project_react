@@ -1,6 +1,6 @@
 /*import { useState } from "react";
 
-function LoginModal({ onLogin, onClose }) {
+function LoginModal({ onLogin, onClose, onRegister }) {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -36,9 +36,12 @@ function LoginModal({ onLogin, onClose }) {
           value={credentials.password}
           onChange={handleChange}
         />
-        <button type="submit">Login</button>
+        <button type="submit">Log In</button>
         <button type="button" onClick={onClose}>
           Close
+        </button>
+        <button type="button" onClick={onRegister}>
+          Register
         </button>
       </form>
     </div>
@@ -46,87 +49,55 @@ function LoginModal({ onLogin, onClose }) {
 }
 
 export default LoginModal;*/
-//////////////////////
-
-import { useState } from "react";
+////////
+import React, { useState } from "react";
+import "./LoginModal.css";
 
 function LoginModal({ onLogin, onClose, onRegister }) {
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCredentials({
-      ...credentials,
-      [name]: value,
-    });
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin(credentials);
+    onLogin({ email, password });
   };
 
   return (
-    <div className="modal modal_opened">
+    <div className="modal">
       <div className="modal__content">
-        <button className="modal__close" onClick={onClose}>
-          <img
-            src="/path/to/close-icon.svg"
-            alt="Close"
-            className="modal__close-icon"
-          />
+        <button onClick={onClose} className="modal__close-btn">
+          X
         </button>
-        <h2 className="modal__title">Sign In</h2>
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <label className="modal__label" htmlFor="email">
-            Email
-          </label>
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
           <input
-            className="modal__input_name"
             type="email"
-            name="email"
-            id="email"
             placeholder="Email"
-            value={credentials.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <label className="modal__label" htmlFor="password">
-            Password
-          </label>
           <input
-            className="modal__input_name"
             type="password"
-            name="password"
-            id="password"
             placeholder="Password"
-            value={credentials.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </form>
-        <div className="modal__footer">
-          <button
-            className="modal__submit"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Log In
+          <button type="button" onClick={handleSubmit}>
+            Login
           </button>
-          <span className="modal__or">or</span>
-          <button className="modal__submit" onClick={onRegister}>
+        </form>
+        <p>
+          Don't have an account?{" "}
+          <button onClick={onRegister} className="modal__register-link">
             Register
           </button>
-        </div>
+        </p>
       </div>
     </div>
   );
 }
 
 export default LoginModal;
-////////////
-
-
+///////

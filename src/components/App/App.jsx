@@ -30,6 +30,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -189,6 +190,10 @@ function App() {
     }
   };
 
+  const handleLoginClick = () => {
+    setIsLoginModalOpen(true);
+  };
+
   return (
     <Router>
       <CurrentTemperatureUnitContext.Provider
@@ -203,7 +208,7 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 user={currentUser}
                 onLogout={handleLogout}
-                onLoginClick={() => setIsLoginModalOpen(true)}
+                onLoginClick={handleLoginClick}
               />
               <Routes>
                 <Route
@@ -232,6 +237,15 @@ function App() {
                     )
                   }
                 />
+                <Route
+                  path="/signin"
+                  element={
+                    <LoginModal
+                      onLogin={handleLogin}
+                      onClose={() => setIsLoginModalOpen(false)}
+                    />
+                  }
+                />
               </Routes>
             </div>
             <AddItemModal
@@ -252,11 +266,16 @@ function App() {
               currentUser={currentUser}
               onEditProfile={handleEditProfile}
             />
-            <LoginModal
-              onLogin={handleLogin}
-              onClose={() => setIsLoginModalOpen(false)}
-              onRegister={() => setIsLoginModalOpen(false)}
-            />
+            {isLoginModalOpen && (
+              <LoginModal
+                onLogin={handleLogin}
+                onClose={() => setIsLoginModalOpen(false)}
+                onRegister={() => {
+                  setIsLoginModalOpen(false);
+                  setIsRegisterModalOpen(true);
+                }}
+              />
+            )}
             <Footer />
           </div>
         </CurrentUserContext.Provider>
@@ -266,8 +285,7 @@ function App() {
 }
 
 export default App;*/
-////////////
-
+////////////////////
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -300,6 +318,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -459,6 +478,10 @@ function App() {
     }
   };
 
+  const handleLoginClick = () => {
+    setIsLoginModalOpen(true);
+  };
+
   return (
     <Router>
       <CurrentTemperatureUnitContext.Provider
@@ -473,7 +496,7 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 user={currentUser}
                 onLogout={handleLogout}
-                onLoginClick={() => setIsLoginModalOpen(true)}
+                onLoginClick={handleLoginClick}
               />
               <Routes>
                 <Route
@@ -502,16 +525,6 @@ function App() {
                     )
                   }
                 />
-                <Route
-                  path="/login"
-                  element={
-                    <LoginModal
-                      onLogin={handleLogin}
-                      onClose={() => setIsLoginModalOpen(false)}
-                      onRegister={() => setIsLoginModalOpen(false)}
-                    />
-                  }
-                />
               </Routes>
             </div>
             <AddItemModal
@@ -536,7 +549,10 @@ function App() {
               <LoginModal
                 onLogin={handleLogin}
                 onClose={() => setIsLoginModalOpen(false)}
-                onRegister={() => setIsLoginModalOpen(false)}
+                onRegister={() => {
+                  setIsLoginModalOpen(false);
+                  setIsRegisterModalOpen(true);
+                }}
               />
             )}
             <Footer />
@@ -548,3 +564,4 @@ function App() {
 }
 
 export default App;
+///////////////
