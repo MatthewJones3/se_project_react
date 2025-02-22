@@ -3,3 +3,5 @@
 @import "./components/Profile/ClothesSection.css";
 @import "./components/Profile/Profile.css";
 @import "./components/Profile/SideBar.css";
+@import "./components/ItemCard/ItemCard.css";
+@import "./components/RegisterModal/RegisterModal.css";
