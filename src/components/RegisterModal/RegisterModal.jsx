@@ -64,6 +64,7 @@ function RegisterModal({ onRegister, onClose }) {
 export default RegisterModal;*/
 
 import { useState } from "react";
+import "./RegisterModal.css";
 
 function RegisterModal({ onRegister, onClose }) {
   const [formData, setFormData] = useState({

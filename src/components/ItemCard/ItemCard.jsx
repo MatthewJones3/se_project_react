@@ -28,6 +28,7 @@ export default ItemCard;*/
 
 import React, { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import "./itemcard.css";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
   const { _id, name, likes } = item;
