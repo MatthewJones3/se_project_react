@@ -79,7 +79,7 @@
   padding: 0;
 }
 
-.modal__submit {
+.modal__submit-login {
   width: 124px;
   height: 36px;
   border-radius: 4px;
@@ -110,7 +110,7 @@
   color: #1e88e5;
 }*/
 
-.modal__or {
+/*.modal__or {
   font-size: 16px;
   color: #777;
-}
+}*/
