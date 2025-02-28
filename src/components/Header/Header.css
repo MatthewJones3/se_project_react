@@ -42,3 +42,8 @@
   font-size: 20px;
   line-height: 24.8px;
 }
+
+.header__avatar {
+  height: 60px;
+  width: 60px;
+}

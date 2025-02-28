@@ -10,7 +10,7 @@ function SignUpModal({ onSignUp, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSignUp({ email, password, name, avatarUrl });
+    onSignUp({ email, password, name, avatar: avatarUrl });
   };
 
   return (

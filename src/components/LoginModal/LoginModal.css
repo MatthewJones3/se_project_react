@@ -104,6 +104,8 @@
   cursor: pointer;
   margin: 0;
   margin-left: 175px;
+  position: absolute;
+  top: 230px;
 }
 
 /*.modal__register-link:hover {
