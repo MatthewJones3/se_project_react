@@ -61,7 +61,7 @@ function LoginModal({ onLogin, onClose, onRegister }) {
             onClick={onRegister}
             className="modal__register-link"
           >
-            Register
+            Sign Up
           </button>
         </form>
       </div>
