@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import avatar from "../../images/avatar.png";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { editUserProfile } from "../../utils/auth";
@@ -8,6 +9,7 @@ import ChangeProfileModal from "../Profile/ChangeProfileModal";
 function SideBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const currentUser = useContext(CurrentUserContext);
+  const navigate = useNavigate();
 
   const handleChangeProfileClick = () => {
     setIsModalOpen(true);
@@ -15,7 +17,8 @@ function SideBar() {
 
   const handleLogOut = () => {
     localStorage.removeItem("jwt");
-    window.location.href = "/login";
+    navigate("/");
+    window.location.reload();
   };
 
   const closeModal = () => {

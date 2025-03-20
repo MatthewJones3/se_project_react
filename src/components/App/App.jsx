@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
@@ -31,8 +31,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSignUpClick = () => {
     setIsSignUpModalOpen(true);
@@ -198,6 +199,7 @@ function App() {
         setCurrentUser(data);
         setIsLoggedIn(true);
         setIsLoginModalOpen(false);
+        navigate("/profile");
       })
       .catch(console.error);
   };
@@ -206,6 +208,7 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
     setIsLoggedIn(false);
+    navigate("/");
   };
 
   const handleEditProfileClick = () => {
@@ -227,90 +230,92 @@ function App() {
   };
 
   return (
-    <Router>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <CurrentUserContext.Provider value={currentUser}>
-          <div className="page" style={{ fontFamily: "CabinetGrotesk" }}>
-            <div className="page__content">
-              <Header
-                handleAddClick={handleAddClick}
-                weatherData={weatherData}
-                isLoggedIn={isLoggedIn}
-                user={currentUser}
-                onLogout={handleLogout}
-                onLoginClick={handleLoginClick}
-                onSignUpClick={handleSignUpClick}
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <CurrentUserContext.Provider value={currentUser}>
+        <div className="page" style={{ fontFamily: "CabinetGrotesk" }}>
+          <div className="page__content">
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              isLoggedIn={isLoggedIn}
+              user={currentUser}
+              onLogout={handleLogout}
+              onLoginClick={handleLoginClick}
+              onSignUpClick={handleSignUpClick}
+            />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Main
+                    weatherData={weatherData}
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                  />
+                }
               />
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <Main
-                      weatherData={weatherData}
+              <Route
+                path="/profile"
+                element={
+                  isLoggedIn ? (
+                    <Profile
                       clothingItems={clothingItems}
-                      handleCardClick={handleCardClick}
-                      onCardLike={handleCardLike}
+                      onCardClick={handleCardClick}
+                      handleAddClick={handleAddClick}
+                      onEditProfileClick={handleEditProfileClick}
                     />
-                  }
-                />
-                <Route
-                  path="/profile"
-                  element={
-                    isLoggedIn ? (
-                      <Profile
-                        clothingItems={clothingItems}
-                        onCardClick={handleCardClick}
-                        handleAddClick={handleAddClick}
-                        onEditProfileClick={handleEditProfileClick}
-                      />
-                    ) : (
-                      <div>Please log in to view your profile.</div>
-                    )
-                  }
-                />
-              </Routes>
-            </div>
-            <AddItemModal
-              isOpen={activeModal === "add-garment"}
-              onAddItem={handleAddItemSubmit}
-              onCloseModal={closeActiveModal}
-            />
-            <ItemModal
-              isOpen={activeModal === "preview"}
-              activeModal={activeModal}
-              item={selectedCard}
-              onClose={closeActiveModal}
-              onDelete={handleCardDelete}
-            />
-            <EditProfileModal
-              isOpen={isEditProfileModalOpen}
-              onClose={() => setIsEditProfileModalOpen(false)}
-              currentUser={currentUser}
-              onEditProfile={handleEditProfile}
-            />
-            {isLoginModalOpen && (
-              <LoginModal
-                onLogin={handleLogin}
-                onClose={() => setIsLoginModalOpen(false)}
-                onRegister={() => {
-                  setIsLoginModalOpen(false);
-                  setIsSignUpModalOpen(true);
-                }}
+                  ) : (
+                    <div>Please log in to view your profile.</div>
+                  )
+                }
               />
-            )}
-            {isSignUpModalOpen && (
-              <SignUpModal
-                onSignUp={handleRegister}
-                onClose={() => setIsSignUpModalOpen(false)}
-              />
-            )}
-            <Footer />
+            </Routes>
           </div>
-        </CurrentUserContext.Provider>
-      </CurrentTemperatureUnitContext.Provider>
-    </Router>
+          <AddItemModal
+            isOpen={activeModal === "add-garment"}
+            onAddItem={handleAddItemSubmit}
+            onCloseModal={closeActiveModal}
+          />
+          <ItemModal
+            isOpen={activeModal === "preview"}
+            activeModal={activeModal}
+            item={selectedCard}
+            onClose={closeActiveModal}
+            onDelete={handleCardDelete}
+          />
+          <EditProfileModal
+            isOpen={isEditProfileModalOpen}
+            onClose={() => setIsEditProfileModalOpen(false)}
+            currentUser={currentUser}
+            onEditProfile={handleEditProfile}
+          />
+          {isLoginModalOpen && (
+            <LoginModal
+              onLogin={handleLogin}
+              onClose={() => setIsLoginModalOpen(false)}
+              onRegister={() => {
+                setIsLoginModalOpen(false);
+                setIsSignUpModalOpen(true);
+              }}
+            />
+          )}
+          {isSignUpModalOpen && (
+            <SignUpModal
+              onSignUp={handleRegister}
+              onClose={() => setIsSignUpModalOpen(false)}
+              onLogin={() => {
+                setIsSignUpModalOpen(false);
+                setIsLoginModalOpen(true);
+              }}
+            />
+          )}
+          <Footer />
+        </div>
+      </CurrentUserContext.Provider>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 

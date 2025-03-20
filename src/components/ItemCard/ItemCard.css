@@ -50,7 +50,10 @@
 .item-card__like-button {
   width: 22px;
   position: absolute;
-  background-color: #fff;
+  background-color: transparent;
   right: 110px;
   padding-left: 0;
+}
+
+.item-card__like-image {
 }

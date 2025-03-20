@@ -28,12 +28,24 @@
   cursor: pointer;
 }
 
-.modal__content-change {
-  z-index: 999;
-}
+
 
 .modal__close-icon-sidebar {
-  margin-top: 40px;
+  margin-top: 55px;
   position: absolute;
   right: 30px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  z-index: 10000;
 }

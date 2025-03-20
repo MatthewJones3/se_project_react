@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SignUpModal.css";
 import closeIcon2 from "../../images/close-icon2.png";
 
-function SignUpModal({ onSignUp, onClose }) {
+function SignUpModal({ onSignUp, onClose, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -15,7 +15,7 @@ function SignUpModal({ onSignUp, onClose }) {
 
   return (
     <div className="modal modal_opened">
-      <div className="modal__content">
+      <div className="modal__content modal__content-sign">
         <h2 className="modal__title-garment">Sign Up</h2>
         <button onClick={onClose} type="button" className="modal__close">
           <img
@@ -88,10 +88,10 @@ function SignUpModal({ onSignUp, onClose }) {
             <p>or</p>
             <button
               type="button"
-              onClick={() => onClose()}
+              onClick={onLogin}
               className="modal__login-link"
             >
-              Login
+              Log In
             </button>
           </div>
         </form>

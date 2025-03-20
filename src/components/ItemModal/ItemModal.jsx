@@ -19,7 +19,7 @@ function ItemModal({ item, isOpen, onClose, onDelete }) {
 
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content">
+      <div className="modal__content modal__content-items">
         <span className="modal__close" onClick={onClose}>
           &times;
         </span>

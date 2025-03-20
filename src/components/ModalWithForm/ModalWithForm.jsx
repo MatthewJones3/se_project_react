@@ -11,7 +11,7 @@ function ModalWithForm({
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content">
+      <div className="modal__content modal__content-form">
         <h2 className="modal__title-garment">{title}</h2>
         <button onClick={onClose} type="button" className="modal__close">
           <img

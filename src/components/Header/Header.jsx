@@ -34,13 +34,15 @@ function Header({
         onToggle={handleToggleSwitchChange}
       />
 
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add Clothes
-      </button>
+      {currentUser && (
+        <button
+          onClick={handleAddClick}
+          type="button"
+          className="header__add-clothes-btn"
+        >
+          + Add Clothes
+        </button>
+      )}
 
       {currentUser ? (
         <Link to="/profile">

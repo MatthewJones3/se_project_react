@@ -4,7 +4,7 @@ import likeBtnImage from "../../images/like-btn.png";
 import likeBtnActiveImage from "../../images/like-btn-active.png";
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardLike }) {
+function ItemCard({ item, onCardClick, onCardLike }) {
   const { _id, name, imageUrl, likes } = item;
   const currentUser = useContext(CurrentUserContext);
 
@@ -25,13 +25,22 @@ function ItemCard({ item, onCardLike }) {
     onCardLike({ id: item._id, isLiked: !isLiked });
   };
 
+  const handleImageClick = () => {
+    onCardClick(item);
+  };
+
   return (
     <li className="item-card">
-      <img src={imageUrl} alt={name} className="item-card__image" />
+      <img
+        src={imageUrl}
+        alt={name}
+        className="item-card__image"
+        onClick={handleImageClick}
+      />
       <div className="item-card__name">{name}</div>
       {currentUser && (
         <button
-          className="item-card__like-button" //{itemLikeButtonClassName}
+          className="item-card__like-button"
           onClick={handleLike}
           aria-label={isLiked ? "Unlike" : "Like"}
         >

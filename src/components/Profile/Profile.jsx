@@ -15,6 +15,10 @@ function Profile({ clothingItems, onCardClick, handleAddClick }) {
     setIsModalOpen(false);
   };
 
+  const onCardLike = (itemId) => {
+    //console.log(`Item with ID ${itemId} liked!`);
+  };
+
   return (
     <div className="profile">
       <SideBar />
@@ -23,11 +27,10 @@ function Profile({ clothingItems, onCardClick, handleAddClick }) {
         onAddItemClick={handleAddItemClick}
         onCardClick={onCardClick}
         handleAddClick={handleAddClick}
+        onCardLike={onCardLike}
       />
     </div>
   );
 }
 
 export default Profile;
-
-
