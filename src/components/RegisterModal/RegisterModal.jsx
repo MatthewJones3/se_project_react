@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import "./RegisterModal.css";
 
 function RegisterModal({ onRegister, onClose }) {
@@ -62,4 +62,4 @@ function RegisterModal({ onRegister, onClose }) {
   );
 }
 
-export default RegisterModal;
+export default RegisterModal;*/
