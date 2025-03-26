@@ -53,7 +53,7 @@
   background-color: transparent;
   right: 110px;
   padding-left: 0;
-}
-
-.item-card__like-image {
+  border: none;
+  cursor: pointer;
+  top: 10px;
 }

@@ -69,3 +69,5 @@ function ChangeProfileModal({ isOpen, onClose, currentUser }) {
 }
 
 export default ChangeProfileModal;
+
+////////

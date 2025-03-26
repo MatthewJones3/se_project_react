@@ -28,10 +28,14 @@
   font-family: "CabinetGrotesk", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  border: none;
+  cursor: pointer;
 }
 
 .sidebar__logout-btn {
   font-family: "CabinetGrotesk", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  border: none;
+  cursor: pointer;
 }

@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import avatar from "../../images/avatar.png";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { editUserProfile } from "../../utils/auth";
 import "./SideBar.css";
 import ChangeProfileModal from "../Profile/ChangeProfileModal";
 

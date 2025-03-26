@@ -16,7 +16,7 @@ function Profile({ clothingItems, onCardClick, handleAddClick }) {
   };
 
   const onCardLike = (itemId) => {
-    //console.log(`Item with ID ${itemId} liked!`);
+    
   };
 
   return (

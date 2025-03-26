@@ -66,3 +66,21 @@ export const signin = (credentials) => {
     body: JSON.stringify(credentials),
   });
 };
+
+export const addCardLike = (id, token) => {
+  return request(`${baseUrl}/items/${id}/like`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const removeCardLike = (id, token) => {
+  return request(`${baseUrl}/items/${id}/like`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
