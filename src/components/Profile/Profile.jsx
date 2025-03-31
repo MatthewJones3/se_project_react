@@ -4,7 +4,12 @@ import ClothesSection from "./ClothesSection";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./Profile.css";
 
-function Profile({ clothingItems, onCardClick, handleAddClick }) {
+function Profile({
+  clothingItems,
+  onCardClick,
+  handleAddClick,
+  onEditProfileClick,
+}) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleAddItemClick = () => {
@@ -15,13 +20,11 @@ function Profile({ clothingItems, onCardClick, handleAddClick }) {
     setIsModalOpen(false);
   };
 
-  const onCardLike = (itemId) => {
-    
-  };
+  const onCardLike = (itemId) => {};
 
   return (
     <div className="profile">
-      <SideBar />
+      <SideBar onEditProfileClick={onEditProfileClick} />
       <ClothesSection
         items={clothingItems}
         onAddItemClick={handleAddItemClick}

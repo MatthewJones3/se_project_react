@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import { editUserProfile } from "../../utils/auth";
 import "./ChangeProfileModal.css";
 import closeIcon2 from "../../images/close-icon2.png";
@@ -32,9 +32,7 @@ function ChangeProfileModal({ isOpen, onClose, currentUser }) {
         </button>
         <form onSubmit={handleSubmit} className="modal__form">
           <div className="modal__input-group">
-            <label htmlFor="name" className="modal__label">
-              Name
-            </label>
+            <label className="modal__label">Name</label>
             <input
               type="text"
               id="name"
@@ -46,9 +44,7 @@ function ChangeProfileModal({ isOpen, onClose, currentUser }) {
           </div>
 
           <div className="modal__input-group">
-            <label htmlFor="avatar" className="modal__label">
-              Avatar URL
-            </label>
+            <label className="modal__label">Avatar URL</label>
             <input
               type="text"
               id="avatar"
@@ -68,6 +64,56 @@ function ChangeProfileModal({ isOpen, onClose, currentUser }) {
   );
 }
 
-export default ChangeProfileModal;
+export default ChangeProfileModal;*/
 
 ////////
+
+import React, { useState } from "react";
+import { editUserProfile } from "../../utils/auth";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+
+function ChangeProfileModal({ isOpen, onClose, currentUser, onChangeProfile }) {
+  const [name, setName] = useState(currentUser?.name || "");
+  const [avatar, setAvatar] = useState(currentUser?.avatar || "");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    onChangeProfile({ name, avatar });
+  };
+
+  return (
+    <ModalWithForm
+      title="Change Profile Data"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      buttonText="Save Changes"
+    >
+      <div className="modal__input-group">
+        <label className="modal__label">Name</label>
+        <input
+          type="text"
+          id="name"
+          className="modal__input"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </div>
+
+      <div className="modal__input-group">
+        <label className="modal__label">Avatar URL</label>
+        <input
+          type="text"
+          id="avatar"
+          className="modal__input"
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+          required
+        />
+      </div>
+    </ModalWithForm>
+  );
+}
+
+export default ChangeProfileModal;

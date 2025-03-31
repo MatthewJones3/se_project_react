@@ -4,7 +4,8 @@ import likeBtnImage from "../../images/like-btn.png";
 import likeBtnActiveImage from "../../images/like-btn-active.png";
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardClick, onCardLike }) {
+function ItemCard({ item, onCardClick, onCardLikes }) {
+  ////change back to onCardLike if doesnt work
   const { _id, name, imageUrl, likes } = item;
   const currentUser = useContext(CurrentUserContext);
 
@@ -20,11 +21,11 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     ? "item-card__like-button_active"
     : "item-card__like-button";
 
-  const handleLike = () => {
+  const handleCardLikes = () => {
     const newIsLiked = !isLiked;
     setIsLiked(newIsLiked);
 
-    const result = onCardLike({ id: item._id, isLiked: newIsLiked });
+    const result = onCardLikes({ id: item._id, isLiked: newIsLiked });
 
     if (result instanceof Promise) {
       result
@@ -53,7 +54,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
       {currentUser && (
         <button
           className="item-card__like-button"
-          onClick={handleLike}
+          onClick={handleCardLikes}
           aria-label={isLiked ? "Unlike" : "Like"}
         >
           <img
@@ -68,3 +69,5 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 }
 
 export default ItemCard;
+
+///// s added to onCardLike and handleCardlike for onCardLikes and handleCardLikes

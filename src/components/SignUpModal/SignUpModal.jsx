@@ -22,9 +22,7 @@ function SignUpModal({ onSignUp, onClose, onLogin }) {
       buttonText=""
     >
       <div className="modal__input-group">
-        <label htmlFor="name" className="modal__label">
-          Name
-        </label>
+        <label className="modal__label">Name</label>
         <input
           type="text"
           id="name-input"
@@ -36,9 +34,7 @@ function SignUpModal({ onSignUp, onClose, onLogin }) {
         />
       </div>
       <div className="modal__input-group">
-        <label htmlFor="email" className="modal__label">
-          Email
-        </label>
+        <label className="modal__label">Email</label>
         <input
           type="email"
           id="email-input"
@@ -50,9 +46,7 @@ function SignUpModal({ onSignUp, onClose, onLogin }) {
         />
       </div>
       <div className="modal__input-group">
-        <label htmlFor="password" className="modal__label">
-          Password
-        </label>
+        <label className="modal__label">Password</label>
         <input
           type="password"
           id="password-input"
@@ -64,9 +58,7 @@ function SignUpModal({ onSignUp, onClose, onLogin }) {
         />
       </div>
       <div className="modal__input-group">
-        <label htmlFor="avatarUrl" className="modal__label">
-          Avatar URL
-        </label>
+        <label className="modal__label">Avatar URL</label>
         <input
           type="url"
           id="avatarUrl-input"

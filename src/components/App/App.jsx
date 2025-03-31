@@ -17,7 +17,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import LoginModal from "../LoginModal/LoginModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import ClothesSection from "../Profile/ClothesSection";
-import { addCardLike, removeCardLike } from "../../utils/api";
+import { addCardLikes, removeCardLikes } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -31,8 +31,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isChangeProfileModalOpen, setIsChangeProfileModalOpen] =
-    useState(false);
+
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
@@ -62,6 +61,10 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
     setSelectedCard(null);
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
   };
 
   const handleCardClick = (card) => {
@@ -106,7 +109,7 @@ function App() {
     }
   };
 
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLikes = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
     if (!token) {
       console.error("No token found, please log in.");
@@ -114,14 +117,14 @@ function App() {
     }
 
     return !isLiked
-      ? addCardLike(id, token)
+      ? addCardLikes(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
             );
           })
           .catch((err) => console.log(err))
-      : removeCardLike(id, token)
+      : removeCardLikes(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === id ? updatedCard : item))
@@ -225,7 +228,7 @@ function App() {
     try {
       const updatedUser = await editUserProfile(updatedUserData);
       setCurrentUser(updatedUser);
-      setIsChangeProfileModalOpen(false);
+      closeActiveModal();
     } catch (error) {
       console.error("Failed to update user profile", error);
     }
@@ -254,7 +257,7 @@ function App() {
                     weatherData={weatherData}
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
-                    onCardLike={handleCardLike}
+                    onCardLike={handleCardLikes} //// handleCardLikes changed to onCardLikes change back if needed
                   />
                 }
               />
@@ -266,7 +269,7 @@ function App() {
                       clothingItems={clothingItems}
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
-                      onEditProfileClick={handleChangeProfileClick}
+                      onEditProfileClick={handleEditProfileClick}
                     />
                   ) : (
                     <div>Please log in to view your profile.</div>
@@ -288,9 +291,9 @@ function App() {
             onDelete={handleCardDelete}
           />
           <ChangeProfileModal
-            isOpen={isChangeProfileModalOpen}
+            isOpen={activeModal === "edit-profile"}
             onClose={() => setIsChangeProfileModalOpen(false)}
-            currentUser={currentUser}
+            //currentUser={currentUser}
             onChangeProfile={handleChangeProfile}
           />
           {isLoginModalOpen && (

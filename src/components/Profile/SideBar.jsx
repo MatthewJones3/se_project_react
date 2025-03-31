@@ -5,14 +5,10 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
 import ChangeProfileModal from "../Profile/ChangeProfileModal";
 
-function SideBar() {
+function SideBar({ onEditProfileClick }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const currentUser = useContext(CurrentUserContext);
   const navigate = useNavigate();
-
-  const handleChangeProfileClick = () => {
-    setIsModalOpen(true);
-  };
 
   const handleLogOut = () => {
     localStorage.removeItem("jwt");
@@ -35,7 +31,7 @@ function SideBar() {
         <p className="sidebar__username">{currentUser?.name}</p>
       </div>
       <button
-        onClick={handleChangeProfileClick}
+        onClick={onEditProfileClick}
         className="sidebar__change-profile-btn"
       >
         Change Profile Data
@@ -44,13 +40,13 @@ function SideBar() {
         Log out
       </button>
 
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <ChangeProfileModal
           isOpen={isModalOpen}
           onClose={closeModal}
-          currentUser={currentUser}
+          //currentUser={currentUser}
         />
-      )}
+      )} */}
     </div>
   );
 }

@@ -67,8 +67,8 @@ export const signin = (credentials) => {
   });
 };
 
-export const addCardLike = (id, token) => {
-  return request(`${baseUrl}/items/${id}/like`, {
+export const addCardLikes = (id, token) => {
+  return request(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -76,11 +76,13 @@ export const addCardLike = (id, token) => {
   });
 };
 
-export const removeCardLike = (id, token) => {
-  return request(`${baseUrl}/items/${id}/like`, {
+export const removeCardLikes = (id, token) => {
+  return request(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
 };
+
+///// added s to like for likes on all "like" lines
