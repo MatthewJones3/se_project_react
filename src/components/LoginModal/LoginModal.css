@@ -107,4 +107,8 @@
   top: 238px;
 }
 
-
+.modal__buttons {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0px;
+}

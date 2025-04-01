@@ -19,7 +19,7 @@ function DeleteConfirmationModal({ isOpen, onClose, onConfirm, item }) {
           Are you sure you want to delete this item?
         </h2>
         <p className="modal__text-delete">This action is irreversible.</p>
-        <div className="modal__buttons">
+        <div className="modal__buttons-delete">
           <button className="modal__delete-button-confirm" onClick={onConfirm}>
             Yes, delete item
           </button>
