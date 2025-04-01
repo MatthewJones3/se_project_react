@@ -69,3 +69,5 @@ function ItemCard({ item, onCardClick, onCardLikes }) {
 }
 
 export default ItemCard;
+
+

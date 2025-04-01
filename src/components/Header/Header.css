@@ -41,6 +41,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24.8px;
+  cursor: pointer;
 }
 
 .header__avatar {

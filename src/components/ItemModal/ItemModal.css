@@ -20,6 +20,7 @@
   width: 22px;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 
 .modal__footer {
@@ -65,5 +66,3 @@
   margin-top: 0px;
   font-family: "CabinetGrotesk", sans-serif;
 }
-
-
