@@ -29,8 +29,8 @@
   position: absolute;
   top: 50px;
   cursor: pointer;
-  right: 40px;
   background: transparent;
+  right: 20px;
 }
 
 .modal__content-form {

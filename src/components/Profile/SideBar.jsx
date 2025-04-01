@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import avatar from "../../images/avatar.png";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
-import ChangeProfileModal from "../Profile/ChangeProfileModal";
+//import ChangeProfileModal from "../Profile/ChangeProfileModal";
 
 function SideBar({ onEditProfileClick }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,14 +39,6 @@ function SideBar({ onEditProfileClick }) {
       <button onClick={handleLogOut} className="sidebar__logout-btn">
         Log out
       </button>
-
-      {/* {isModalOpen && (
-        <ChangeProfileModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          //currentUser={currentUser}
-        />
-      )} */}
     </div>
   );
 }

@@ -40,6 +40,7 @@
   left: 350px;
   bottom: 33px;
   padding: 0px;
+  font-family: "CabinetGrotesk", sans-serif;
 }
 
 .modal__delete-button:hover {
@@ -51,6 +52,7 @@
   position: relative;
   top: 33px;
   margin-top: 0px;
+  font-family: "CabinetGrotesk", sans-serif;
 }
 
 .modal__title {
@@ -61,7 +63,7 @@
   margin-bottom: 0px;
   font-size: 18px;
   margin-top: 0px;
+  font-family: "CabinetGrotesk", sans-serif;
 }
 
-.modal__content-items {
-}
+

@@ -7,7 +7,8 @@ function checkResponse(res) {
   return res.json();
 }
 
-function request(url, options = {}) {
+export function request(url, options = {}) {
+  // Ensure request is exported
   return fetch(url, options).then(checkResponse);
 }
 
@@ -84,5 +85,3 @@ export const removeCardLikes = (id, token) => {
     },
   });
 };
-
-///// added s to like for likes on all "like" lines

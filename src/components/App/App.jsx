@@ -18,6 +18,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import SignUpModal from "../SignUpModal/SignUpModal";
 import ClothesSection from "../Profile/ClothesSection";
 import { addCardLikes, removeCardLikes } from "../../utils/api";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -34,6 +35,8 @@ function App() {
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState(null);
+  //const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -43,6 +46,11 @@ function App() {
 
   const handleSignUpClick = () => {
     setIsSignUpModalOpen(true);
+  };
+
+  const handleDeleteConfirmation = (item) => {
+    setItemToDelete(item);
+    setActiveModal("delete-confirmation");
   };
 
   const handleToggleSwitchChange = () => {
@@ -61,6 +69,7 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
     setSelectedCard(null);
+    setItemToDelete(null);
   };
 
   const handleEditProfileClick = () => {
@@ -76,21 +85,32 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleCardDelete = async (card) => {
-    if (!card?._id) {
-      console.error("Card is missing _id", card);
+  ////////
+  const handleCardDelete = (item) => {
+    setItemToDelete(item);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleDeleteItem = async () => {
+    if (!itemToDelete?._id) {
       return;
     }
 
     try {
-      await deleteItem(card._id);
+      await deleteItem(itemToDelete._id);
       setClothingItems((prevItems) =>
-        prevItems.filter((item) => item._id !== card._id)
+        prevItems.filter((item) => item._id !== itemToDelete._id)
       );
-      closeActiveModal();
+      setActiveModal("");
+      setItemToDelete(null);
+      setSelectedCard(null); ///// new delete if I need to just testing
     } catch (error) {
       console.error("Failed to delete item:", error);
     }
+  };
+
+  const closeDeleteConfirmationModal = () => {
+    setIsDeleteConfirmationModalOpen(false);
   };
 
   const handleAddItemSubmit = async (item) => {
@@ -257,7 +277,7 @@ function App() {
                     weatherData={weatherData}
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
-                    onCardLike={handleCardLikes} //// handleCardLikes changed to onCardLikes change back if needed
+                    onCardLike={handleCardLikes}
                   />
                 }
               />
@@ -270,6 +290,7 @@ function App() {
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       onEditProfileClick={handleEditProfileClick}
+                      onDelete={handleDeleteConfirmation} //// new delete if needed
                     />
                   ) : (
                     <div>Please log in to view your profile.</div>
@@ -288,12 +309,17 @@ function App() {
             activeModal={activeModal}
             item={selectedCard}
             onClose={closeActiveModal}
-            onDelete={handleCardDelete}
+            onDelete={handleDeleteConfirmation}
+          />
+          <DeleteConfirmationModal
+            isOpen={activeModal === "delete-confirmation"}
+            onClose={closeActiveModal}
+            onConfirm={handleDeleteItem}
+            item={itemToDelete}
           />
           <ChangeProfileModal
             isOpen={activeModal === "edit-profile"}
-            onClose={() => setIsChangeProfileModalOpen(false)}
-            //currentUser={currentUser}
+            onClose={closeActiveModal}
             onChangeProfile={handleChangeProfile}
           />
           {isLoginModalOpen && (

@@ -5,7 +5,6 @@ import likeBtnActiveImage from "../../images/like-btn-active.png";
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick, onCardLikes }) {
-  ////change back to onCardLike if doesnt work
   const { _id, name, imageUrl, likes } = item;
   const currentUser = useContext(CurrentUserContext);
 
@@ -34,7 +33,6 @@ function ItemCard({ item, onCardClick, onCardLikes }) {
           console.error("Failed to toggle like:", error);
           setIsLiked(isLiked);
         });
-    } else {
     }
   };
 
@@ -50,24 +48,24 @@ function ItemCard({ item, onCardClick, onCardLikes }) {
         className="item-card__image"
         onClick={handleImageClick}
       />
-      <div className="item-card__name">{name}</div>
-      {currentUser && (
-        <button
-          className="item-card__like-button"
-          onClick={handleCardLikes}
-          aria-label={isLiked ? "Unlike" : "Like"}
-        >
-          <img
-            src={isLiked ? likeBtnActiveImage : likeBtnImage}
-            alt={isLiked ? "Unlike" : "Like"}
-            className="item-card__like-image"
-          />
-        </button>
-      )}
+      <div className="item-card__header">
+        <div className="item-card__name">{name}</div>
+        {currentUser && (
+          <button
+            className="item-card__like-button"
+            onClick={handleCardLikes}
+            aria-label={isLiked ? "Unlike" : "Like"}
+          >
+            <img
+              src={isLiked ? likeBtnActiveImage : likeBtnImage}
+              alt={isLiked ? "Unlike" : "Like"}
+              className="item-card__like-image"
+            />
+          </button>
+        )}
+      </div>
     </li>
   );
 }
 
 export default ItemCard;
-
-///// s added to onCardLike and handleCardlike for onCardLikes and handleCardLikes

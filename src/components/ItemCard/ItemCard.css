@@ -23,19 +23,33 @@
   object-fit: cover;
 }
 
-.item-card__name {
+.item-card__header {
   position: absolute;
   top: 5px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-card__name {
   background: white;
   color: lightgrey;
   font-size: 16px;
   text-align: center;
-  width: 95px;
   height: 24px;
   border-radius: 8px;
-  padding-top: 5px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.item-card__like-button {
+  width: 22px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .item-card__weather {
@@ -45,15 +59,4 @@
   transform: translateX(-50%);
   color: white;
   font-size: 14px;
-}
-
-.item-card__like-button {
-  width: 22px;
-  position: absolute;
-  background-color: transparent;
-  right: 110px;
-  padding-left: 0;
-  border: none;
-  cursor: pointer;
-  top: 10px;
 }

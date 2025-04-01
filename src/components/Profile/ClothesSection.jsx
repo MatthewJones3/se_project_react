@@ -9,7 +9,7 @@ function ClothesSection({
   onCardLike,
   handleAddClick,
   onItemDelete,
-  onItemAdd,
+  onCardClick,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -24,6 +24,7 @@ function ClothesSection({
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setSelectedItem(null);
   };
 
   return (
@@ -57,5 +58,3 @@ function ClothesSection({
 }
 
 export default ClothesSection;
-
-/////////

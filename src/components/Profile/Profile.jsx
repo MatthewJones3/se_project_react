@@ -1,7 +1,6 @@
 import React from "react";
 import SideBar from "./SideBar";
 import ClothesSection from "./ClothesSection";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./Profile.css";
 
 function Profile({
@@ -9,17 +8,8 @@ function Profile({
   onCardClick,
   handleAddClick,
   onEditProfileClick,
+  onDelete,
 }) {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-  const handleAddItemClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   const onCardLike = (itemId) => {};
 
   return (
@@ -27,10 +17,10 @@ function Profile({
       <SideBar onEditProfileClick={onEditProfileClick} />
       <ClothesSection
         items={clothingItems}
-        onAddItemClick={handleAddItemClick}
         onCardClick={onCardClick}
         handleAddClick={handleAddClick}
         onCardLike={onCardLike}
+        onItemDelete={onDelete}
       />
     </div>
   );
