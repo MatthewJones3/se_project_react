@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./ChangeProfileModal.css";
 
-function ChangeProfileModal({ isOpen, onClose, currentUser, onChangeProfile }) {
-  const [name, setName] = useState(currentUser?.name || "");
-  const [avatar, setAvatar] = useState(currentUser?.avatar || "");
+function ChangeProfileModal({ isOpen, onClose, onChangeProfile }) {
+  const currentUser = useContext(CurrentUserContext);
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      setName(currentUser?.name || "");
+      setAvatar(currentUser?.avatar || "");
+    }
+  }, [isOpen, currentUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +29,9 @@ function ChangeProfileModal({ isOpen, onClose, currentUser, onChangeProfile }) {
       buttonText="Save Changes"
     >
       <div className="modal__input-group">
-        <label className="modal__label">Name</label>
+        <label htmlFor="name" className="modal__label">
+          Name
+        </label>
         <input
           type="text"
           id="name"
@@ -30,9 +41,10 @@ function ChangeProfileModal({ isOpen, onClose, currentUser, onChangeProfile }) {
           required
         />
       </div>
-
       <div className="modal__input-group">
-        <label className="modal__label">Avatar URL</label>
+        <label htmlFor="avatar" className="modal__label">
+          Avatar URL
+        </label>
         <input
           type="text"
           id="avatar"

@@ -47,7 +47,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
       onSubmit={handleSubmit}
     >
       <div className="modal__input-group">
-        <label className="modal__label">
+        <label htmlFor="item-name" className="modal__label">
           Name
         </label>
         <input
@@ -60,7 +60,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         />
       </div>
       <div className="modal__input-group">
-        <label className="modal__label">
+        <label htmlFor="image-url" className="modal__label">
           Image
         </label>
         <input
@@ -74,9 +74,10 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
       </div>
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select Weather Type</legend>
-        <label className="modal__label">
+        <label htmlFor="weather-hot" className="modal__label">
           <input
             type="radio"
+            id="weather-hot"
             name="weather"
             value="hot"
             checked={weather === "hot"}
@@ -84,9 +85,10 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
           />
           Hot
         </label>
-        <label className="modal__label">
+        <label htmlFor="weather-warm" className="modal__label">
           <input
             type="radio"
+            id="weather-warm"
             name="weather"
             value="warm"
             checked={weather === "warm"}
@@ -94,9 +96,10 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
           />
           Warm
         </label>
-        <label className="modal__label">
+        <label htmlFor="weather-cold" className="modal__label">
           <input
             type="radio"
+            id="weather-cold"
             name="weather"
             value="cold"
             checked={weather === "cold"}

@@ -8,7 +8,7 @@ function checkResponse(res) {
 }
 
 export function request(url, options = {}) {
-  // Ensure request is exported
+  
   return fetch(url, options).then(checkResponse);
 }
 

@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import closeIcon2 from "../../images/close-icon2.png";
 
 function ItemModal({ item, isOpen, onClose, onDelete }) {
-  if (!isOpen || !item) return null; /// || !item is new delete if needed
+  if (!isOpen || !item) return null; 
 
   const currentUser = useContext(CurrentUserContext);
   const isOwn = item?.owner === currentUser?._id;
@@ -50,4 +50,4 @@ function ItemModal({ item, isOpen, onClose, onDelete }) {
 
 export default ItemModal;
 
-///////
+

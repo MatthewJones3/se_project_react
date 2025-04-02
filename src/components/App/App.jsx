@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import "./App.css";
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
@@ -19,6 +19,7 @@ import SignUpModal from "../SignUpModal/SignUpModal";
 import ClothesSection from "../Profile/ClothesSection";
 import { addCardLikes, removeCardLikes } from "../../utils/api";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import ProtectedRoute from "../App/ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -36,7 +37,6 @@ function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
-  //const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -85,7 +85,6 @@ function App() {
     setSelectedCard(card);
   };
 
-  ////////
   const handleCardDelete = (item) => {
     setItemToDelete(item);
     setIsDeleteModalOpen(true);
@@ -101,9 +100,9 @@ function App() {
       setClothingItems((prevItems) =>
         prevItems.filter((item) => item._id !== itemToDelete._id)
       );
-      setActiveModal("");
+      closeActiveModal();
       setItemToDelete(null);
-      setSelectedCard(null); ///// new delete if I need to just testing
+      setSelectedCard(null);
     } catch (error) {
       console.error("Failed to delete item:", error);
     }
@@ -284,17 +283,15 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  isLoggedIn ? (
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
                       clothingItems={clothingItems}
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}
                       onEditProfileClick={handleEditProfileClick}
-                      onDelete={handleDeleteConfirmation} //// new delete if needed
+                      onDelete={handleDeleteConfirmation}
                     />
-                  ) : (
-                    <div>Please log in to view your profile.</div>
-                  )
+                  </ProtectedRoute>
                 }
               />
             </Routes>

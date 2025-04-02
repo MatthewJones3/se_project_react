@@ -22,7 +22,9 @@ function LoginModal({ isOpen, onLogin, onClose, onRegister }) {
       extraActionText="Sign Up"
     >
       <div className="modal__input-group">
-        <label className="modal__label">Email</label>
+        <label htmlFor="email" className="modal__label">
+          Email
+        </label>
         <input
           type="email"
           id="email"
@@ -35,7 +37,9 @@ function LoginModal({ isOpen, onLogin, onClose, onRegister }) {
         />
       </div>
       <div className="modal__input-group">
-        <label className="modal__label">Password</label>
+        <label htmlFor="password" className="modal__label">
+          Password
+        </label>
         <input
           type="password"
           id="password"

@@ -9,11 +9,13 @@ function ItemCard({ item, onCardClick, onCardLikes }) {
   const currentUser = useContext(CurrentUserContext);
 
   const [isLiked, setIsLiked] = useState(
-    likes.some((id) => id === currentUser?._id)
+    currentUser ? likes.some((id) => id === currentUser._id) : false
   );
 
   useEffect(() => {
-    setIsLiked(likes.some((id) => id === currentUser?._id));
+    setIsLiked(
+      currentUser ? likes.some((id) => id === currentUser._id) : false
+    );
   }, [likes, currentUser]);
 
   const itemLikeButtonClassName = isLiked
@@ -21,6 +23,12 @@ function ItemCard({ item, onCardClick, onCardLikes }) {
     : "item-card__like-button";
 
   const handleCardLikes = () => {
+    if (!currentUser) {
+      console.log("Please log in to like items.");
+      return;
+    }
+
+    const previousIsLiked = isLiked; 
     const newIsLiked = !isLiked;
     setIsLiked(newIsLiked);
 
@@ -31,7 +39,7 @@ function ItemCard({ item, onCardClick, onCardLikes }) {
         .then(() => {})
         .catch((error) => {
           console.error("Failed to toggle like:", error);
-          setIsLiked(isLiked);
+          setIsLiked(previousIsLiked); 
         });
     }
   };
@@ -69,5 +77,3 @@ function ItemCard({ item, onCardClick, onCardLikes }) {
 }
 
 export default ItemCard;
-
-

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import avatar from "../../images/avatar.png";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
-//import ChangeProfileModal from "../Profile/ChangeProfileModal";
 
 function SideBar({ onEditProfileClick }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
