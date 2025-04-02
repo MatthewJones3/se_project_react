@@ -135,7 +135,7 @@ function App() {
       return;
     }
 
-    return !isLiked
+    return isLiked
       ? addCardLikes(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
@@ -348,5 +348,3 @@ function App() {
 }
 
 export default App;
-
-
